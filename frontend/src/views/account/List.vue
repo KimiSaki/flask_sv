@@ -1,6 +1,6 @@
 
 <template>
-  <div class="about">
+  <div class="account_list">
     <p>{{ message }}</p>
     <h3>アカウント一覧</h3>
     <v-simple-table>
