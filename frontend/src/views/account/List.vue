@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in accounts" v-bind:key="account">
+          <tr v-for="account in accounts" v-bind:key="account.id">
             <td>{{ account.id }}</td>
             <td>{{ account.account_name }}</td>
             <td>{{ account.start_on }}</td>
@@ -36,8 +36,6 @@
   </div>
 </template>
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 
 var accounts = [
 	{
@@ -63,13 +61,40 @@ var accounts = [
 		status: 1
 	}
 ]
+import qs from 'qs';
+var header = 'application/x-www-form-urlencoded'
+var request = {a: "a"}
+var url = 'http://localhost:5000/api/account/search'
+const config = {
+	headers: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+	},
+}
 
 export default {
-  name: "SS",
+  name: "account_list",
   data() {
 	  return {
-		  accounts: accounts
+		  accounts: accounts,
+      message: null
 	  }
   },
+  mounted() {
+    var self = this;
+	  this.axios
+	  	.post(url, qs.stringify(request), config)
+		.then(function(response) {
+        console.log("List axios response");
+        console.log(response);
+        console.log(response.headers);
+        self.accounts=response.data.body;
+        self.meesage=response.status.message; 
+        console.log(self.accounts);
+      })
+		.catch(err => {
+			console.log("List axios error")
+			console.log(err)
+		})
+  }
 };
 </script>
