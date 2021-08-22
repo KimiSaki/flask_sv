@@ -235,24 +235,25 @@ def delete(account_id, operation_account_id):
 def convertdict(from_dict):
     print(f"convertdict from_dict={from_dict}")
     target_dict = {}
-    if ('id' in from_dict):
-        target_dict['id'] = int(from_dict['id'])
-    if ('account_name' in from_dict):
-        target_dict['account_name'] = str(from_dict['account_name'])
-    if ('start_on' in from_dict):
-        target_dict['start_on'] = strptime(from_dict['start_on'])
-    if ('end_on' in from_dict):
-        target_dict['end_on'] = strptime(from_dict['end_on'])
-    if ('created_by' in from_dict):
-        target_dict['created_by'] = int(from_dict['created_by'])
-    if ('created_at' in from_dict):
-        target_dict['created_at'] = strptime(from_dict['created_at'])
-    if ('updated_by' in from_dict):
-        target_dict['updated_by'] = int(from_dict['updated_by'])
-    if ('updated_at' in from_dict):
-        target_dict['updated_at'] = strptime(from_dict['updated_at'])
-    if ('status' in from_dict):
-        target_dict['status'] = int(from_dict['status'])
+    if not (from_dict is None):
+        if ('id' in from_dict):
+            target_dict['id'] = int(from_dict['id'])
+        if ('account_name' in from_dict):
+            target_dict['account_name'] = str(from_dict['account_name'])
+        if ('start_on' in from_dict):
+            target_dict['start_on'] = strptime(from_dict['start_on'])
+        if ('end_on' in from_dict):
+            target_dict['end_on'] = strptime(from_dict['end_on'])
+        if ('created_by' in from_dict):
+            target_dict['created_by'] = int(from_dict['created_by'])
+        if ('created_at' in from_dict):
+            target_dict['created_at'] = strptime(from_dict['created_at'])
+        if ('updated_by' in from_dict):
+            target_dict['updated_by'] = int(from_dict['updated_by'])
+        if ('updated_at' in from_dict):
+            target_dict['updated_at'] = strptime(from_dict['updated_at'])
+        if ('status' in from_dict):
+            target_dict['status'] = int(from_dict['status'])
     return target_dict
 
         
